@@ -1,11 +1,10 @@
-const {
-  getCodedDoujin,
-  getRandomCode,
-  getMainPageContentPopular,
-} = require("nhentai-websrcrapping-api");
-const { Telegraf } = require("telegraf");
+import nhentai from "nhentai-websrcrapping-api";
+import { Telegraf } from "telegraf";
+import "dotenv/config";
 
-require("dotenv").config({ path: __dirname + "/.env" });
+const { getCodedDoujin, getRandomCode, getMainPageContentPopular } = nhentai;
+
+// require("dotenv").config({ path: __dirname + "/.env" });
 
 console.log(".... starting Nii-sama");
 
