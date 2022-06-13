@@ -64,7 +64,7 @@ bot.command("show_doujin", (act) => {
   } = act;
   text = text.split(" ")[1];
 
-  getCodedDoujin(text).then(({ ogImages }) =>
+  getCodedDoujin(text === "" ? "177013" : text).then(({ ogImages }) =>
     ogImages.sort().map((x) => act.reply(x))
   );
 });
@@ -76,23 +76,25 @@ bot.command("getDetails", (s) => {
 
   try {
     let sch = text.split(" ")[1];
-    getCodedDoujin(sch).then(({ name, code, tags, artists }) => {
-      s.reply(`Onii-sama that doujin name is : ${name}`);
-      try {
-        s.reply(`Onii-chan that doujin was made by : ${artists.join(" ")}`);
-      } catch (e) {
-        s.reply("A shit ton of people");
+    getCodedDoujin(sch === "" ? "177013" : sch).then(
+      ({ name, code, tags, artists }) => {
+        s.reply(`Onii-sama that doujin name is : ${name}`);
+        try {
+          s.reply(`Onii-chan that doujin was made by : ${artists.join(" ")}`);
+        } catch (e) {
+          s.reply("A shit ton of people");
+        }
+        s.reply(`Nii-chan that doujin code is : ${code}`);
+        try {
+          s.reply(`And that doujin tags are : ${tags.join(" ")}`);
+        } catch (e) {
+          s.reply(
+            `And that doujin tags are : ooops too much for my memory Nii-sama`
+          );
+        }
+        s.reply(`What a perverted nii-sama you are!!!`);
       }
-      s.reply(`Nii-chan that doujin code is : ${code}`);
-      try {
-        s.reply(`And that doujin tags are : ${tags.join(" ")}`);
-      } catch (e) {
-        s.reply(
-          `And that doujin tags are : ooops too much for my memory Nii-sama`
-        );
-      }
-      s.reply(`What a perverted nii-sama you are!!!`);
-    });
+    );
   } catch (e) {
     s.reply("You nii-sama that doesnt exists!!!");
   }
