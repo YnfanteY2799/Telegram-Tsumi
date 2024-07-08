@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "pnpm nodemon dist/index.js"
+  },
   "type": "module",
   "keywords": [],
   "author": "",
