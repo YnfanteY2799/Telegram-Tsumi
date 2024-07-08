@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
-  },
+  "scripts": {},
   "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "nhentai-websrcrapping-api": "^2.0.2",
-    "nodemon": "^3.1.4",
+    "nhentai-websrcrapping-api": "^2.0.10",
     "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
   }
 }

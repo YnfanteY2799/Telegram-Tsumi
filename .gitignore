@@ -1,4 +1,4 @@
 /source
-/src
 /node_modules
 /.env
+/dist

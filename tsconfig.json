@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "Node16",
+    "strictFunctionTypes": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "listEmittedFiles": true,
+    "esModuleInterop": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "alwaysStrict": true,
+    "declaration": true,
+    "module": "Node16",
+    "listFiles": false,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "src/types/*"
+      ]
+    },
+    "target": "es2022",
+    "lib": [
+      "es2022",
+      "ESNext",
+      "DOM"
+    ],
+    "noPropertyAccessFromIndexSignature": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "useDefineForClassFields": true,
+    "noImplicitOverride": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
