@@ -1,8 +1,6 @@
-import nhentai from "nhentai-websrcrapping-api";
+import { getCodedDoujin, getRandomCode, getMainPageContentPopular } from "nhentai-websrcrapping-api";
 import { Telegraf } from "telegraf";
 import "dotenv/config";
-
-const { getCodedDoujin, getRandomCode, getMainPageContentPopular } = nhentai;
 
 // require("dotenv").config({ path: __dirname + "/.env" });
 
@@ -22,22 +20,14 @@ bot.start((ctx) => {
 });
 
 bot.command("giveRandomSauce", (x) =>
-  getRandomCode().then((ex) =>
-    x.reply(`${ex.code}, https://nhentai.net/g/${ex.code.replace("#", "")}/`)
-  )
+  getRandomCode().then((ex) => x.reply(`${ex.code}, https://nhentai.net/g/${ex.code.replace("#", "")}/`))
 );
 
 bot.command("getPopulars", (x) =>
   getMainPageContentPopular().then((ex) => {
     x.reply(
       `The current most popular doujins are (${ex.length}) : \n` +
-        ex.map(
-          ({ code, link }) =>
-            "\n" +
-            `Code : ${code} ,` +
-            "\n" +
-            `Link : https://nhentai.net${link}`
-        )
+        ex.map(({ code, link }) => "\n" + `Code : ${code} ,` + "\n" + `Link : https://nhentai.net${link}`)
     );
   })
 );
@@ -64,9 +54,7 @@ bot.command("show_doujin", (act) => {
   } = act;
   text = text.split(" ")[1];
 
-  getCodedDoujin(text === "" ? "177013" : text).then(({ ogImages }) =>
-    ogImages.sort().map((x) => act.reply(x))
-  );
+  getCodedDoujin(text === "" ? "177013" : text).then(({ ogImages }) => ogImages.sort().map((x) => act.reply(x)));
 });
 
 bot.command("getDetails", (s) => {
@@ -76,56 +64,43 @@ bot.command("getDetails", (s) => {
 
   try {
     let sch = text.split(" ")[1];
-    getCodedDoujin(sch === "" ? "177013" : sch).then(
-      ({ name, code, tags, artists }) => {
-        s.reply(`Onii-sama that doujin name is : ${name}`);
-        try {
-          s.reply(`Onii-chan that doujin was made by : ${artists.join(" ")}`);
-        } catch (e) {
-          s.reply("A shit ton of people");
-        }
-        s.reply(`Nii-chan that doujin code is : ${code}`);
-        try {
-          s.reply(`And that doujin tags are : ${tags.join(" ")}`);
-        } catch (e) {
-          s.reply(
-            `And that doujin tags are : ooops too much for my memory Nii-sama`
-          );
-        }
-        s.reply(`What a perverted nii-sama you are!!!`);
+    getCodedDoujin(sch === "" ? "177013" : sch).then(({ name, code, tags, artists }) => {
+      s.reply(`Onii-sama that doujin name is : ${name}`);
+      try {
+        s.reply(`Onii-chan that doujin was made by : ${artists.join(" ")}`);
+      } catch (e) {
+        s.reply("A shit ton of people");
       }
-    );
+      s.reply(`Nii-chan that doujin code is : ${code}`);
+      try {
+        s.reply(`And that doujin tags are : ${tags.join(" ")}`);
+      } catch (e) {
+        s.reply(`And that doujin tags are : ooops too much for my memory Nii-sama`);
+      }
+      s.reply(`What a perverted nii-sama you are!!!`);
+    });
   } catch (e) {
     s.reply("You nii-sama that doesnt exists!!!");
   }
 });
 
-bot.command("who_created_you", (e) =>
-  e.reply(`This young and handsome boy : https://github.com/YnfanteY2799`)
-);
+bot.command("who_created_you", (e) => e.reply(`This young and handsome boy : https://github.com/YnfanteY2799`));
 
 bot.command("where_are_you", (e) =>
-  e.reply(
-    `I'm somewhere near Tokyo!!!!, Just kidding i'm right here :\n https://github.com/YnfanteY2799/Telegram-Tsumi`
-  )
+  e.reply(`I'm somewhere near Tokyo!!!!, Just kidding i'm right here :\n https://github.com/YnfanteY2799/Telegram-Tsumi`)
 );
 
-bot.command("how_where_you_made", (e) =>
-  e.reply(`The young master made me by doing lewd things with a printer !!!`)
-);
+bot.command("how_where_you_made", (e) => e.reply(`The young master made me by doing lewd things with a printer !!!`));
 
 bot.command("ohayou", (act) =>
   act.telegram.sendVideo(act.chat.id, {
-    source:
-      "https://www.youtube.com/shorts/88tOa9Q4pco?&ab_channel=MaxtheMeatGuy",
+    source: "https://www.youtube.com/shorts/88tOa9Q4pco?&ab_channel=MaxtheMeatGuy",
   })
 );
 // bot.command('ohayou', act => act.telegram.sendVideo(act.chat.id, {source:"./source/ohayou-onichan.mp4"}));
 
 bot.command("how_are_you", (act) => {
-  act.reply(
-    "I don't know nii-sama, let me send you something for you to evaluate!"
-  );
+  act.reply("I don't know nii-sama, let me send you something for you to evaluate!");
   act.telegram.sendPhoto(act.chat.id, {
     source: `./source/botPhotos/${Math.floor(Math.random() * 26)}.jpg`,
   });
