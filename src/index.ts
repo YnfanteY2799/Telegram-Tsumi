@@ -16,12 +16,19 @@ bot.command("random", async (ctx) => {
   ctx.reply("Hmmm give me 1 second!");
   ctx.reply("Hope this doujin is good for you!");
 
-  const { name, artists, categories, characters, code } = await getRandomCode();
+  const { name, artists, categories, characters, code, groups, languague, parodies, tags } = await getRandomCode();
 
   ctx.reply(
-    `Title: ${name} \n Code: ${code} \n Artist: ${artists} \n Categories: ${categories.join(
-      " "
-    )} \n Characters: ${characters.join(" ")}`
+    `Title: ${name} \n 
+     Code: ${code} \n 
+     Artist: ${artists} \n 
+     Tags: ${tags.join(" ")} \n
+     Categories: ${categories.join(" ")} \n 
+     Characters: ${characters.join(" ")} \n
+     Groups: ${groups.join(" ")} \n
+     Language: ${languague.join(" ")} \n
+     Parodies: ${parodies.join(" ")} \n
+     `
   );
 });
 
