@@ -3,7 +3,7 @@ import { Telegraf } from "telegraf";
 
 console.log("Starting bot server!");
 
-const bot = new Telegraf(process.env["TG_Key"] ?? "2096102290:AAGwq1YNE2q1nVlqD9j2Q4qK0rJokrrHLV8");
+const bot = new Telegraf(process.env["TG_Key"] ?? "");
 
 bot.start((ctx) => {
   const { message } = ctx;
